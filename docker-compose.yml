@@ -1,0 +1,9 @@
+version: '2'
+services:
+    nodenginx:
+        build:
+            context: "./.docker/node-nginx/"
+        ports:
+            - 80:80
+        volumes:
+            - "./:/var/www/"

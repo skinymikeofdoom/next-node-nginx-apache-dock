@@ -1,0 +1,5 @@
+FROM sinet/nginx-node:latest
+
+COPY default.conf /etc/nginx/conf.d/
+
+CMD ["nginx", "-g", "daemon off;"]
