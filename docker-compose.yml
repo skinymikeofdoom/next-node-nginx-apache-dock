@@ -5,5 +5,21 @@ services:
             context: "./.docker/node-nginx/"
         ports:
             - 80:80
+            - 3000:3000
         volumes:
             - "./:/var/www/"
+    apache:
+        build:
+            context: ./.docker/apache
+            args:
+                HOST_IP: $HOST_IP
+                GITHUB_ACCESS_TOKEN: $GITHUB_ACCESS_TOKEN
+        ports:
+            - 81:80
+            - 443:443
+            - 8080:8080
+            - 8025:8025
+        volumes:
+            - ./:/var/www/
+        links:
+            - nodenginx
